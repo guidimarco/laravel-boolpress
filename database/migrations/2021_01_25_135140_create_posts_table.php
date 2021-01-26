@@ -18,8 +18,9 @@ class CreatePostsTable extends Migration
 
             // other
             $table->string('title');
-            $table->string('author');
+            // $table->string('author');
             $table->mediumText('text')->nullable();
+            $table->string('slug')->unique();
 
             $table->timestamps(); // created_at && updated_at
         });
