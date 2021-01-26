@@ -47,8 +47,24 @@ class PostsTableSeeder extends Seeder
 
             // assign fake value
             $new_post -> title = $faker -> sentence();
-            $new_post -> author = $faker -> name();
+            // $new_post -> author = $faker -> name();
             $new_post -> text = $faker -> text();
+
+            // verify && assign slug (title -> slug)
+            // 1) get slug base
+            $base_slug = Str::slug($new_post -> title, '-');
+            $slug = $base_slug;
+            // 2) sentinel var
+            $already_slug = Post::where('slug', $slug) -> first(); // return collection if there is, NULL otherwise
+            $contatore = 1; // contatore
+            // 3) check while there's not same-slug
+            while ($already_slug) {
+                $slug = $base_slug . '-' . $contatore;
+                $contatore++;
+                $already_slug = Post::where('slug', $slug) -> first();
+            }
+            // 4) assign to class
+            $new_post -> slug = $slug;
 
             $new_post -> save();
         }
