@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(); // pacchetto laravel UI
+Auth::routes(['register' => false]); // pacchetto laravel UI (registrazione disabilitata)
 
 Route::namespace('Admin') -> prefix('admin') -> name('admin.') -> middleware('auth') -> group(function() {
     // rotta dashboard
