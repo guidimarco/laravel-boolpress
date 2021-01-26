@@ -28,8 +28,16 @@
                                 <th scope="row">{{ $post -> id }}</th>
                                 <td>{{ $post -> title }}</td>
                                 <td>{{ $post -> text }}</td>
-                                <td>
-
+                                <td class="w-25">
+                                    <a href="#" class="btn btn-outline-info">
+                                        Vedi
+                                    </a>
+                                    <a href="#" class="btn btn-outline-warning">
+                                        Modifica
+                                    </a>
+                                    <a href="#" class="btn btn-outline-danger">
+                                        Elimina
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
