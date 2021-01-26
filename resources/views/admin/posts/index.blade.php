@@ -29,7 +29,7 @@
                                 <td>{{ $post -> title }}</td>
                                 <td>{{ $post -> text }}</td>
                                 <td class="w-25">
-                                    <a href="#" class="btn btn-outline-info">
+                                    <a href="{{ route('admin.posts.show', ['post' => $post -> id]) }}" class="btn btn-outline-info">
                                         Vedi
                                     </a>
                                     <a href="#" class="btn btn-outline-warning">
