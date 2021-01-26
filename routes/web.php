@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(); // pacchetto laravel UI
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace('Admin') -> prefix('admin') -> name('admin.') -> middleware('auth') -> group(function() {
+    // rotta dashboard
+    Route::get('/', 'HomeController@index') -> name('index');
+
+});
