@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Boolpress | Dashboard')
+
 @section('content')
     <div class="container">
         <div class="row">

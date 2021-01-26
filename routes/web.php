@@ -21,4 +21,6 @@ Route::namespace('Admin') -> prefix('admin') -> name('admin.') -> middleware('au
     // rotta dashboard
     Route::get('/', 'HomeController@index') -> name('index');
 
+    // rotte Posts
+    Route::resource('/posts', 'PostController');
 });

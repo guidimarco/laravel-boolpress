@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Boolpress | Dashboard')
+@section('title', 'Boolpress | My Blog')
 
 @section('content')
     <div class="container">
