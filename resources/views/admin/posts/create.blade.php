@@ -23,8 +23,16 @@
                         <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;"></textarea>
                     </div>
 
+                    {{-- category --}}
+                    <select class="custom-select">
+                        <option value="">Seleziona una categoria</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category -> id }}">{{ $category -> name }}</option>
+                        @endforeach
+                    </select>
+
                     {{-- sumbit --}}
-                    <button type="submit" class="btn btn-primary">Crea nuovo post</button>
+                    <button type="submit" class="btn btn-primary my-2">Crea nuovo post</button>
                 </form>
             </div>
         </div>
