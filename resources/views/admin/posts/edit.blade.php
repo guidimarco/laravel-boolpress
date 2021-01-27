@@ -44,12 +44,15 @@
                     <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-info">
                         Torna a tutti i post
                     </a>
-                    <form class="d-inline-block" action="{{ route('admin.posts.destroy', ['post' => $post -> id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        
-                        <button type="submit" name="button" class="btn btn-outline-danger">Elimina</button>
-                    </form>
+                    <a href="#" id="link-delete" class="btn btn-outline-danger">
+                        Prova
+                    </a>
+                </form>
+                <form class="d-inline-block" id="form-delete" action="{{ route('admin.posts.destroy', ['post' => $post -> id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" name="button" class="btn btn-outline-danger">Elimina</button>
                 </form>
             </div>
         </div>
