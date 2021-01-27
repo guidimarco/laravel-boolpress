@@ -37335,6 +37335,14 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(document).ready(function () {
+  console.log("ciao");
+  $('.delete').click(function (event) {// console.log("click");
+    // event.preventDefalut();
+    // swal("Hello world!");
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
