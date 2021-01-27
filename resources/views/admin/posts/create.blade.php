@@ -24,12 +24,15 @@
                     </div>
 
                     {{-- category --}}
-                    <select class="custom-select">
-                        <option value="">Seleziona una categoria</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category -> id }}">{{ $category -> name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <select class="custom-select" name="category_id">
+                            <option value="">Seleziona una categoria</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category -> id }}">{{ $category -> name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     {{-- sumbit --}}
                     <button type="submit" class="btn btn-primary my-2">Crea nuovo post</button>
