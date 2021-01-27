@@ -10,6 +10,14 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ route('admin.posts.create' )}}" class="btn btn-primary my-2">
+                    Crea nuovo post
+                </a>
+            </div>
+        </div>
+
         {{-- table: all posts --}}
         <div class="row">
             <div class="col-12">
@@ -32,7 +40,7 @@
                                     <a href="{{ route('admin.posts.show', ['post' => $post -> id]) }}" class="btn btn-outline-info">
                                         Vedi
                                     </a>
-                                    <a href="#" class="btn btn-outline-warning">
+                                    <a href="#" class="btn btn-outline-dark">
                                         Modifica
                                     </a>
                                     <a href="#" class="btn btn-outline-danger">
