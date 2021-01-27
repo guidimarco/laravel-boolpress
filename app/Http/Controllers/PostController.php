@@ -9,9 +9,19 @@ class PostController extends Controller
 {
     public function index() {
         $data = [
-            'posts' => Post::all() -> take(5)
+            'posts' => Post::all()
         ];
 
-        return view('guest.posts', $data);
+        return view('guest.posts.index', $data);
+    }
+
+    public function show($post_slug) {
+        // dd($post_slug);
+        $this_post = Post::where('slug', $post_slug) -> first();
+        // dd($this_post);
+        $data = [
+            'post' => $this_post
+        ];
+        return view('guest.posts.show', $data);
     }
 }
