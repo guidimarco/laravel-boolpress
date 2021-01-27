@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 use App\Post;
 use App\Category;
@@ -44,7 +46,31 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post_input = $request -> all();
+        // dd($post_input);
+
+        $new_post = new Post();
+        $new_post -> fill($post_input);
+
+        //generate slug and check
+        // 1) get slug base
+        $base_slug = Str::slug($new_post -> title, '-');
+        $slug = $base_slug;
+        // 2) sentinel var
+        $already_slug = Post::where('slug', $slug) -> first(); // return collection if there is, NULL otherwise
+        $contatore = 1; // contatore
+        // 3) check while there's not same-slug
+        while ($already_slug) {
+            $slug = $base_slug . '-' . $contatore;
+            $contatore++;
+            $already_slug = Post::where('slug', $slug) -> first();
+        }
+        // 4) assign to class
+        $new_post -> slug = $slug;
+
+        $new_post -> save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
