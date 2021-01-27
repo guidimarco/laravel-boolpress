@@ -10,6 +10,7 @@
                 <ul>
                     <li>ID: {{ $post -> id }}</li>
                     <li>Ref: {{ $post -> slug }}</li>
+                    <li>Categoria: {{ $post -> category ? $post -> category -> name : '-' }}</li>
                     <li>Contenuto: {{ $post -> text }}</li>
                     <li>Creato: {{ $post -> created_at -> format('d/m/Y H:i') }}</li>
                     <li>Ultima modifica: {{ $post -> updated_at -> format('d/m/Y H:i') }}</li>
