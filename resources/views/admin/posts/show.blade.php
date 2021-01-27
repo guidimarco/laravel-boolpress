@@ -10,7 +10,7 @@
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-info">
                     Torna a tutti i post
                 </a>
-                <a href="#" class="btn btn-outline-dark">
+                <a href="{{ route('admin.posts.edit', ['post' => $post -> id]) }}" class="btn btn-outline-dark">
                     Modifica
                 </a>
                 <a href="#" class="btn btn-outline-danger">
