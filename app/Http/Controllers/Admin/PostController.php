@@ -115,9 +115,39 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post_input_edit = $request -> all();
+        // $original_post = Post::find($id);
+        // dd($post_input_edit, $original_post);
+
+        // if title change -> generate new $slug
+        // dd($post_input_edit['title'] != $post -> title); -> true
+        if ($post_input_edit['title'] != $post -> title) {
+            //generate slug and check
+            // 1) get slug base
+            $base_slug = Str::slug($post_input_edit['title'], '-');
+            $slug = $base_slug;
+            // 2) sentinel var
+            $already_slug = Post::where('slug', $slug) -> first(); // return collection if there is, NULL otherwise
+            $contatore = 1; // contatore
+            // 3) check while there's not same-slug
+            while ($already_slug) {
+                $slug = $base_slug . '-' . $contatore;
+                $contatore++;
+                $already_slug = Post::where('slug', $slug) -> first();
+            }
+            // 4) assign to class
+            $post_input_edit['slug'] = $slug;
+            // dd($slug);
+            $post -> update(['slug' => $slug]);
+        }
+
+        $post -> update($post_input_edit);
+
+        // dd($post);
+
+        return redirect() -> route('admin.posts.show', ['post' => $post -> id]);
     }
 
     /**
