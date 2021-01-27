@@ -12,9 +12,10 @@
 
         <div class="row">
             @foreach ($posts as $post)
-                <div class="col-6 post-container">
+                <div class="col-12 post-container">
                     <h2>{{ $post -> title }}</h2>
                     <p>{{ $post -> text }}</p>
+                    <span>Categoria: {{ $post -> category ? $post -> category -> name : '-' }}</span>
                 </div>
             @endforeach
         </div>
