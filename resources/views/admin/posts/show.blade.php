@@ -13,7 +13,12 @@
                 <a href="{{ route('admin.posts.edit', ['post' => $post -> id]) }}" class="btn btn-outline-dark">
                     Modifica
                 </a>
-                <form class="d-inline-block" action="{{ route('admin.posts.destroy', ['post' => $post -> id]) }}" method="POST">
+                <a href="#" id="link-delete" class="btn btn-outline-danger">
+                    Elimina
+                </a>
+
+                {{-- hidden form -> delete --}}
+                <form class="d-none" id="form-delete" action="{{ route('admin.posts.destroy', ['post' => $post -> id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
 
