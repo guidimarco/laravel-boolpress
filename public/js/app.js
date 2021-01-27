@@ -37336,8 +37336,10 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(document).ready(function () {
-  $("#link-delete").click(function (event) {
+  $("[id^='link-delete']").click(function (event) {
     event.preventDefault(); // STOP click
+
+    var this_form_id = $(this).attr('id').replace('link-delete', '#form-delete'); // console.log(this_form_id);
     // var this_form = $('#form-delete');
     // console.log(this_form);
     // alert!
@@ -37350,7 +37352,7 @@ $(document).ready(function () {
       dangerMode: true
     }).then(function (willDelete) {
       if (willDelete) {
-        $('#form-delete').submit();
+        $(this_form_id).submit();
       } else {
         swal("Il file non è stato cancellato!");
       }
