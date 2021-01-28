@@ -56,16 +56,16 @@
                                     <a href="{{ route('admin.categories.edit', ['category' => $category -> id ]) }}" class="btn btn-outline-dark">
                                         Modifica
                                     </a>
-                                    <a href="#" {{-- id="link-delete-{{ $post -> id }}" --}} class="btn btn-outline-danger">
+                                    <a href="#" id="link-delete-{{ $category -> id }}" class="btn btn-outline-danger">
                                         Elimina
                                     </a>
 
-                                    {{-- <form class="d-none" id="form-delete-{{ $post -> id }}" action="{{ route('admin.posts.destroy', ['post' => $post -> id]) }}" method="POST">
+                                    <form class="d-none" id="form-delete-{{ $category -> id }}" action="{{ route('admin.categories.destroy', ['category' => $category -> id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
 
                                         <button type="submit" name="button" class="btn btn-outline-danger">Elimina</button>
-                                    </form> --}}
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

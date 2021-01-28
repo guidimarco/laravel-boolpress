@@ -21,7 +21,7 @@
 
                     {{-- sumbit --}}
                     <button type="submit" class="btn btn-primary my-2">Conferma le modifiche</button>
-                    
+
                     <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-info">
                         Torna a tutte le categorie
                     </a>
@@ -31,12 +31,12 @@
                 </form>
 
                 {{-- hidden form --}}
-                {{-- <form class="d-none" id="form-delete" action="{{ route('admin.posts.destroy', ['post' => $post -> id]) }}" method="POST">
+                <form class="d-none" id="form-delete" action="{{ route('admin.categories.destroy', ['category' => $category -> id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
 
                     <button type="submit" name="button" class="btn btn-outline-danger"></button>
-                </form> --}}
+                </form>
             </div>
         </div>
     </div>
