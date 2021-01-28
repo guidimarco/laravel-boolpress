@@ -25,4 +25,7 @@ Route::namespace('Admin') -> prefix('admin') -> name('admin.') -> middleware('au
 
     // rotte Posts
     Route::resource('/posts', 'PostController');
+
+    // rotte Categories
+    Route::resource('/categories', 'CategoryController');
 });
