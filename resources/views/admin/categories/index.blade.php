@@ -53,7 +53,7 @@
                                 <td>{{ $category -> slug }}</td>
                                 <td>{{ $category -> created_at }}</td>
                                 <td class="w-25">
-                                    <a href="#" class="btn btn-outline-dark">
+                                    <a href="{{ route('admin.categories.edit', ['category' => $category -> id ]) }}" class="btn btn-outline-dark">
                                         Modifica
                                     </a>
                                     <a href="#" {{-- id="link-delete-{{ $post -> id }}" --}} class="btn btn-outline-danger">

@@ -84,9 +84,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $data = [
+            'category' => $category
+        ];
+        return view('admin.categories.edit', $data);
     }
 
     /**
@@ -96,9 +99,31 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $edit_category = $request -> all();
+
+        // dd($edit_category);
+
+        //generate slug and check
+        // 1) get slug base
+        $base_slug = Str::slug($edit_category['name'], '-');
+        $slug = $base_slug;
+        // 2) sentinel var
+        $already_slug = Category::where('slug', $slug) -> first(); // return collection if there is, NULL otherwise
+        $contatore = 1; // contatore
+        // 3) check while there's not same-slug
+        while ($already_slug) {
+            $slug = $base_slug . '-' . $contatore;
+            $contatore++;
+            $already_slug = Category::where('slug', $slug) -> first();
+        }
+        // 4) assign to class
+        $edit_category['slug'] = $slug;
+
+        $category -> update($edit_category);
+
+        return redirect() -> route('admin.categories.index');
     }
 
     /**
