@@ -19,13 +19,16 @@
                     @csrf
 
                     {{-- titolo --}}
-                    <div class="form-group">
+                    <div class="form-group not-null">
                         <label>Nome</label>
                         <input type="text" class="form-control" name="name" placeholder="Inserisci il titolo">
                     </div>
 
                     {{-- sumbit --}}
-                    <button type="submit" class="btn btn-primary my-2">Crea nuova categoria</button>
+                    <a href="#" class="btn btn-primary my-2" id="create-new-item">
+                        Crea nuova categoria
+                    </a>
+                    <button type="submit" class="d-none"></button>
                 </form>
             </div>
         </div>

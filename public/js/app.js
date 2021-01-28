@@ -37336,6 +37336,21 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(document).ready(function () {
+  // create new item -> not null input
+  $('#create-new-item').click(function (event) {
+    event.preventDefault(); // STOP on click
+    // check if all not-null input are not empty
+
+    var current_input = $(this).siblings('.not-null').children('input').val().trim();
+    console.log(current_input);
+
+    if (!current_input.length) {
+      console.log("nullo");
+    } else {
+      console.log("c'e");
+    }
+  }); // delete item -> alert
+
   $("[id^='link-delete']").click(function (event) {
     event.preventDefault(); // STOP click
 
