@@ -34,6 +34,14 @@
                     <li>Titolo: {{ $post -> title }}</li>
                     <li>Contenuto: {{ $post -> text }}</li>
                     <li>Categoria: {{ $post -> category ? $post -> category -> name : '-' }}</li>
+                    <li>
+                        Tag:
+                        @forelse ($post -> tags as $tag)
+                            {{ $tag -> name }}{{ $loop -> last ? '' : ','}}
+                        @empty
+                            -
+                        @endforelse
+                    </li>
                     <li>Creato: {{ $post -> created_at -> format('d/m/Y H:i') }}</li>
                     <li>Ultima modifica: {{ $post -> updated_at -> format('d/m/Y H:i') }}</li>
                     <li>URI: {{ $post -> slug }}</li>
