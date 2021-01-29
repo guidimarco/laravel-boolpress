@@ -39,6 +39,18 @@
                         </select>
                     </div>
 
+                    {{-- tag --}}
+                    <span>Tags:</span>
+                    @foreach ($tags as $tag)
+                        <div class="form-check">
+                            <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}"
+                            {{ $post -> tags -> contains($tag) ? 'checked' : ''}}>
+                            <label class="form-check-label">
+                                {{ $tag -> name }}
+                            </label>
+                        </div>
+                    @endforeach
+
                     {{-- sumbit --}}
                     <button type="submit" class="btn btn-primary my-2">Conferma le modifiche</button>
                     <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-info">

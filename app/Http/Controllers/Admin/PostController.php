@@ -105,7 +105,8 @@ class PostController extends Controller
         if ($post) {
             $data = [
                 'post' => $post,
-                'categories' => Category::all()
+                'categories' => Category::all(),
+                'tags' => Tag::all()
             ];
             return view('admin.posts.edit', $data);
         }
@@ -123,7 +124,7 @@ class PostController extends Controller
     {
         $post_input_edit = $request -> all();
         // $original_post = Post::find($id);
-        // dd($post_input_edit, $original_post);
+        // dd($post_input_edit);
 
         // if title change -> generate new $slug
         // dd($post_input_edit['title'] != $post -> title); -> true
@@ -151,6 +152,8 @@ class PostController extends Controller
 
         // dd($post);
 
+        $post -> tags() -> sync($post_input_edit['tags']);
+
         return redirect() -> route('admin.posts.show', ['post' => $post -> id]);
     }
 
@@ -162,6 +165,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post -> tags() -> sync([]);
         $post -> delete();
         return redirect() -> route('admin.posts.index');
     }
