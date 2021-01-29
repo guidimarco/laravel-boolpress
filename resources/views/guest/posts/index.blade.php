@@ -14,7 +14,7 @@
             <ul>
                 @foreach ($posts as $post)
                     <li>
-                        <a href="{{ route('posts.show', ['post' => $post -> slug]) }}">{{ $post -> title }}</a>
+                        <a href="{{ route('posts.show', ['category' => $post -> category ? $post -> category -> slug : 'nessuna-categoria', 'post' => $post -> slug]) }}">{{ $post -> title }}</a>
                     </li>
                 @endforeach
             </ul>
