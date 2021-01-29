@@ -43,4 +43,8 @@ class PostController extends Controller
         ];
         return view('guest.posts.indexForCategory', $data);
     }
+
+    public function indexForTag() {
+        return 'ciao';
+    }
 }

@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index') -> name('index');
+
 Route::get('/posts', 'PostController@index') -> name('posts.index');
 Route::get('/posts/{category}', 'PostController@indexForCategory') -> name('posts.indexForCategory');
+Route::get('/posts/tag/{tag}', 'PostController@indexForTag') -> name('posts.indexForTag');
 Route::get('/posts/{category}/{post}', 'PostController@show') -> name('posts.show');
 
 Auth::routes(['register' => false]); // pacchetto laravel UI (registrazione disabilitata)
