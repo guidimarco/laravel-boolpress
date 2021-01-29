@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -33,7 +34,8 @@ class PostController extends Controller
     public function create()
     {
         $data = [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'tags' => Tag::all()
         ];
         return view('admin.posts.create', $data);
     }
@@ -69,6 +71,8 @@ class PostController extends Controller
         $new_post -> slug = $slug;
 
         $new_post -> save();
+
+        $new_post -> tags() -> sync($post_input['tags']);
 
         return redirect()->route('admin.posts.index');
     }

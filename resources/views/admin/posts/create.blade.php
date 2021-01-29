@@ -34,6 +34,17 @@
                         </select>
                     </div>
 
+                    {{-- tags --}}
+                    <span>Tags:</span>
+                    @foreach ($tags as $tag)
+                        <div class="form-check">
+                            <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}">
+                            <label class="form-check-label">
+                                {{ $tag -> name }}
+                            </label>
+                        </div>
+                    @endforeach
+
                     {{-- sumbit --}}
                     <button type="submit" class="btn btn-primary my-2">Crea nuovo post</button>
                 </form>
