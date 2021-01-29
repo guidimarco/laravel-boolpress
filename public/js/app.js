@@ -37341,13 +37341,10 @@ $(document).ready(function () {
     event.preventDefault(); // STOP on click
     // check if all not-null input are not empty
 
-    var current_input = $(this).siblings('.not-null').children('input').val().trim();
-    console.log(current_input);
+    var current_input = $(this).siblings('.not-null').children('input').val().trim(); // console.log(current_input);
 
-    if (!current_input.length) {
-      console.log("nullo");
-    } else {
-      console.log("c'e");
+    if (current_input.length) {// not null
+      // $(this).siblings()
     }
   }); // delete item -> alert
 
