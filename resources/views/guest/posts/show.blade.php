@@ -13,7 +13,7 @@
                 <span>
                     Categoria:
                     @if ($post -> category)
-                        <a href="{{ route('posts.indexForCategory', ['category' => $post -> category -> name]) }}">
+                        <a href="{{ route('posts.indexForCategory', ['category' => $post -> category -> slug]) }}">
                             {{ $post -> category -> name }}
                         </a>
                     @else
