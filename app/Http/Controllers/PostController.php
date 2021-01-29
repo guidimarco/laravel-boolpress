@@ -27,4 +27,8 @@ class PostController extends Controller
         ];
         return view('guest.posts.show', $data);
     }
+
+    public function indexForCategory() {
+        return 'ok';
+    }
 }
