@@ -68,8 +68,13 @@
                     @enderror
                     @foreach ($tags as $tag)
                         <div class="form-check">
-                            <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}"
-                            {{ $post -> tags -> contains($tag) ? 'checked' : ''}}>
+                            @if ($errors -> any())
+                                <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}"
+                                {{ in_array($tag -> id, old('tags', [])) ? 'checked' : ''}}>
+                            @else
+                                <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}"
+                                {{ $post -> tags -> contains($tag) ? 'checked' : ''}}>
+                            @endif
                             <label class="form-check-label">
                                 {{ $tag -> name }}
                             </label>
