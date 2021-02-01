@@ -63,12 +63,12 @@
                     @error ('tags')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <div class="form-check">
+                    {{-- <div class="form-check">
                         <input name="tags[]" class="form-check-input" type="checkbox" value="pippo">
                         <label class="form-check-label">
                             L'orrore
                         </label>
-                    </div>
+                    </div> --}}
                     @foreach ($tags as $tag)
                         <div class="form-check">
                             <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}"
