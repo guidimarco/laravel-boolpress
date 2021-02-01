@@ -21,4 +21,8 @@ class HomeController extends Controller
         ];
         return view('admin.home', $data);
     }
+
+    public function getToken() {
+        return "ciao";
+    }
 }

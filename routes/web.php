@@ -25,6 +25,7 @@ Auth::routes(['register' => false]); // pacchetto laravel UI (registrazione disa
 Route::namespace('Admin') -> prefix('admin') -> name('admin.') -> middleware('auth') -> group(function() {
     // rotta dashboard
     Route::get('/', 'HomeController@index') -> name('index');
+    Route::post('/get-token', 'HomeController@getToken') -> name('get_token');
 
     // rotte Posts
     Route::resource('/posts', 'PostController');
