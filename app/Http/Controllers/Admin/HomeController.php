@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -23,6 +25,14 @@ class HomeController extends Controller
     }
 
     public function getToken() {
-        return "ciao";
+        $new_token = Str::random(80); // generate random token
+
+        // get current user -> assign new token
+        $user = Auth::user();
+        $user -> api_token = $new_token;
+
+        $user -> save();
+
+        return redirect() -> route('admin.index');   
     }
 }
