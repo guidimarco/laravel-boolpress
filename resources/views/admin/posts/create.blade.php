@@ -11,16 +11,27 @@
                     {{-- token --}}
                     @csrf
 
+                    {{-- Errori validazione --}}
+                    @if ($errors -> any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors -> all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     {{-- titolo --}}
                     <div class="form-group">
                         <label>Titolo</label>
-                        <input type="text" class="form-control" name="title" placeholder="Inserisci il titolo">
+                        <input type="text" class="form-control" name="title" placeholder="Inserisci il titolo" required>
                     </div>
 
                     {{-- contenuto --}}
                     <div class="form-group">
                         <label>Contenuto</label>
-                        <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;"></textarea>
+                        <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;" required></textarea>
                     </div>
 
                     {{-- category --}}

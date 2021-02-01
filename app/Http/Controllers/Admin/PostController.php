@@ -48,6 +48,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // VALIDATE
+        $request -> validate([
+            'title' => 'required|max:255',
+            'text' => 'required',
+            'category_id' => 'nullable|exist: categories, id',
+            'tags' => 'nullable|exist: tags, id'
+        ]);
+
+        // SAVE NEW POST
         $post_input = $request -> all();
         // dd($post_input);
 

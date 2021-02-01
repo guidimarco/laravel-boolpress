@@ -25,7 +25,7 @@
                 <span>
                     Tag:
                     @forelse ($post -> tags as $tag)
-                        <a href="{{ route('posts.indexForTag', ['tag' => 'tag']) }}">{{
+                        <a href="{{ route('posts.indexForTag', ['tag' => $tag -> slug]) }}">{{
                             $tag -> name
                         }}</a>{{
                             $loop -> last ? '' : ','
