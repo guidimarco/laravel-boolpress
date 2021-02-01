@@ -53,8 +53,8 @@
                         <select class="custom-select" name="category_id">
                             <option value="">Seleziona una categoria</option>
                             @foreach ($categories as $category)
-                                <option value="{{ old('category_id', $category -> id) }}"
-                                {{ $post -> category_id == $category -> id ? 'selected' : ''}}>
+                                <option value="{{ $category -> id }}"
+                                {{ old('category_id', $post -> category_id) == $category -> id ? 'selected' : ''}}>
                                     {{ $category -> name }}
                                 </option>
                             @endforeach
