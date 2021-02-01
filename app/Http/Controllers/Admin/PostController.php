@@ -81,7 +81,10 @@ class PostController extends Controller
 
         $new_post -> save();
 
-        $new_post -> tags() -> sync($post_input['tags']);
+        if (array_key_exists('tags', $post_input)) {
+            // if exists -> add to tabella ponte
+            $new_post -> tags() -> sync($post_input['tags']);
+        }
 
         return redirect()->route('admin.posts.index');
     }
