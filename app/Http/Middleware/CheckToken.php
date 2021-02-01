@@ -31,7 +31,8 @@ class CheckToken
         $input_token = substr($auth_token, 7);
 
         // user <-> token
-        $user = User::where('api_token', $input_token)
+        $user = User::where('api_token', $input_token) -> first();
+        // dd($user);
 
         // check: user exists?
         if (!$user) {
