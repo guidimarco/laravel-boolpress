@@ -134,6 +134,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // VALIDATE
+        $request -> validate([
+            'title' => 'required|max:255',
+            'text' => 'required',
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
+        ]);
+
+        // UPDATE POST
         $post_input_edit = $request -> all();
         // $original_post = Post::find($id);
         // dd($post_input_edit);

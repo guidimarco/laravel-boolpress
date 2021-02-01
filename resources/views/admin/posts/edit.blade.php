@@ -16,14 +16,14 @@
                     <div class="form-group">
                         <label>Titolo</label>
                         <input type="text" class="form-control" name="title" placeholder="Inserisci il titolo"
-                        value="{{ $post -> title }}">
+                        value="{{ old('title', $post -> title) }} required">
                     </div>
 
                     {{-- contenuto --}}
                     <div class="form-group">
                         <label>Contenuto</label>
-                        <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;">{{
-                            $post -> text
+                        <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;" required>{{
+                            old('text', $post -> text)
                         }}</textarea>
                     </div>
 
@@ -33,8 +33,10 @@
                         <select class="custom-select" name="category_id">
                             <option value="">Seleziona una categoria</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category -> id }}"
-                                    {{ $post -> category_id == $category -> id ? 'selected' : ''}}>{{ $category -> name }}</option>
+                                <option value="{{ old('category_id', $category -> id) }}"
+                                {{ $post -> category_id == $category -> id ? 'selected' : ''}}>
+                                    {{ $category -> name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
