@@ -52,8 +52,8 @@ class PostController extends Controller
         $request -> validate([
             'title' => 'required|max:255',
             'text' => 'required',
-            'category_id' => 'nullable|exist: categories, id',
-            'tags' => 'nullable|exist: tags, id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
         ]);
 
         // SAVE NEW POST

@@ -28,7 +28,7 @@
                         @error ('title')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" class="form-control" name="title" placeholder="Inserisci il titolo" required>
+                        <input type="text" class="form-control" name="title" placeholder="Inserisci il titolo">
                     </div>
 
                     {{-- contenuto --}}
@@ -37,7 +37,7 @@
                         @error ('text')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;" required></textarea>
+                        <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;"></textarea>
                     </div>
 
                     {{-- category --}}
@@ -48,6 +48,7 @@
                         @enderror
                         <select class="custom-select" name="category_id">
                             <option value="">Seleziona una categoria</option>
+                            <option value="pippo">L'orrore</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category -> id }}">{{ $category -> name }}</option>
                             @endforeach
@@ -59,6 +60,12 @@
                     @error ('tags')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+                    <div class="form-check">
+                        <input name="tags[]" class="form-check-input" type="checkbox" value="pippo">
+                        <label class="form-check-label">
+                            L'orrore
+                        </label>
+                    </div>
                     @foreach ($tags as $tag)
                         <div class="form-check">
                             <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag -> id }}">
