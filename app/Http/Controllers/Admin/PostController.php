@@ -173,7 +173,10 @@ class PostController extends Controller
 
         // dd($post);
 
-        $post -> tags() -> sync($post_input_edit['tags']);
+        if (array_key_exists('tags', $post_input_edit)) {
+            $post -> tags() -> sync($post_input_edit['tags']);
+        }
+
 
         return redirect() -> route('admin.posts.show', ['post' => $post -> id]);
     }
