@@ -30,6 +30,6 @@ class MessageFromWebsite extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.message-request');
+        return $this->replyTo($this->msg->mail)->view('emails.message-request');
     }
 }
