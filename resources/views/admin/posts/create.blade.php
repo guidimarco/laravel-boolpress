@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <h2>Crea nuovo post</h2>
-                <form method="POST" action="{{ route('admin.posts.store') }}">
+                <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
                     {{-- token --}}
                     @csrf
 
@@ -38,6 +38,15 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <textarea class="form-control" name="text" placeholder="Inserisci l'articolo" row="10" style="height: 200px;">{{ old('text') }}</textarea>
+                    </div>
+
+                    {{-- img --}}
+                    <div class="form-group">
+                        <label>Immagine</label>
+                        @error ('cover-img')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input type="file" class="form-control" name="cover-img">
                     </div>
 
                     {{-- category --}}
