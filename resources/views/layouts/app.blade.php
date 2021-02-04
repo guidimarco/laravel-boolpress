@@ -43,6 +43,11 @@
                                     Posts
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contatti') }}">
+                                    Contatti
+                                </a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

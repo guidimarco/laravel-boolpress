@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index') -> name('index');
+Route::get('/contatti', 'HomeController@contatti') -> name('contatti');
+Route::post('/contatti', 'HomeController@contattiSend') -> name('contatti.send');
 
 Route::get('/posts', 'PostController@index') -> name('posts.index');
 Route::get('/posts/{category}', 'PostController@indexForCategory') -> name('posts.indexForCategory');
