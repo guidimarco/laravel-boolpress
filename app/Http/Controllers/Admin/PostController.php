@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Storage;
 
 use App\Post;
 use App\Category;
@@ -53,7 +54,8 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'text' => 'required',
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'nullable|exists:tags,id'
+            'tags' => 'nullable|exists:tags,id',
+            'cover-img' => 'nullable|image|max:512'
         ]);
 
         // SAVE NEW POST
@@ -61,7 +63,18 @@ class PostController extends Controller
         // dd($post_input);
 
         $new_post = new Post();
+        // dd($new_post);
+
+        if (array_key_exists('cover-img', $post_input)) {
+            // dd("ciao");
+            $img_path = Storage::put('post-img', $post_input['cover-img']);
+            // dd($img_path);
+            $post_input['img'] = $img_path;
+            // dd($post_input);
+        }
+
         $new_post -> fill($post_input);
+        // dd($new_post);
 
         //generate slug and check
         // 1) get slug base
