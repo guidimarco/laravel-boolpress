@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,18 @@ class HomeController extends Controller
     }
 
     public function contattiSend(Request $request) {
-        dd($request);
-        return "ciao";
+        // dd($request);
+        $input_msg = $request -> all(); // new msg from contatti
+        // dd($new_msg);
+
+        $new_msg = new Message();
+        // dd($new_msg); // new obj empty
+
+        $new_msg -> fill($input_msg);
+        // dd($new_msg); // new obj pieno
+
+        $new_msg -> save();
+
+        return redirect() -> route('index');
     }
 }
