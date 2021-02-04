@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Message;
 
+use App\Mail\MessageFromWebsite;
+use Illuminate\Support\Facades\Mail;
+
 class HomeController extends Controller
 {
     /**
@@ -39,6 +42,8 @@ class HomeController extends Controller
         // dd($new_msg); // new obj pieno
 
         $new_msg -> save();
+
+        Mail::to('commerciale@boolpress.com') -> send(new MessageFromWebsite($new_msg));
 
         return redirect() -> route('index');
     }

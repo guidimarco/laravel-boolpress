@@ -11,14 +11,16 @@ class MessageFromWebsite extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $msg;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($_msg)
     {
-        //
+        $this->msg = $_msg;
     }
 
     /**
@@ -28,6 +30,6 @@ class MessageFromWebsite extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.message-request');
     }
 }
