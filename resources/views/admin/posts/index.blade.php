@@ -15,6 +15,11 @@
                 <a href="{{ route('admin.posts.create')}}" class="btn btn-primary my-2">
                     Crea nuovo post
                 </a>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
         </div>
 

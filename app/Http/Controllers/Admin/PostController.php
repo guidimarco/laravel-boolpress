@@ -99,7 +99,7 @@ class PostController extends Controller
             $new_post -> tags() -> sync($post_input['tags']);
         }
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->withSuccess('Salvataggio avvenuto correttamente');
     }
 
     /**
